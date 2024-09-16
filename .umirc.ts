@@ -10,9 +10,10 @@ export default defineConfig({
   base: '/chat-history-generator',
   publicPath: '/chat-history-generator/',
   routes: defaultRoutes,
-  plugins: ['@umijs/plugins/dist/antd', '@umijs/plugins/dist/tailwindcss',],
+  plugins: ['@umijs/plugins/dist/antd', '@umijs/plugins/dist/tailwindcss', '@umijs/plugins/dist/model'],
   antd: {},
   tailwindcss: {},
+  model: {},
   npmClient: 'pnpm',
   vite: {
     plugins: [

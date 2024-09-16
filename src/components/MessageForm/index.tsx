@@ -23,8 +23,7 @@ export default (props: Props) => {
   return (
     <Form
       name="message_info"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
+      labelCol={{ span: 6 }}
       form={form}
       initialValues={{ type: MESSAGE_TYPE.TEXT, sender: SENDER.Sender }}
       onFinish={(value) => props.onSubmit?.(value)}

@@ -32,10 +32,10 @@ export const SENDER_FILTER = [{
 }]
 
 export const MESSAGE_TYPE_FILTER = [
-    { label: '文本', value: MESSAGE_TYPE.TEXT, component: Text },
-    { label: '图片', value: MESSAGE_TYPE.IMAGE },
-    { label: '视频', value: MESSAGE_TYPE.VIDEO },
-    { label: '文件', value: MESSAGE_TYPE.FILE },
-    { label: '链接', value: MESSAGE_TYPE.LINK },
-    { label: '交易', value: MESSAGE_TYPE.transaction },
+    { label: '文本', value: MESSAGE_TYPE.TEXT, component: Text, },
+    { label: '图片', value: MESSAGE_TYPE.IMAGE, disabled: true },
+    { label: '视频', value: MESSAGE_TYPE.VIDEO, disabled: true },
+    { label: '文件', value: MESSAGE_TYPE.FILE, disabled: true },
+    { label: '链接', value: MESSAGE_TYPE.LINK, disabled: true },
+    { label: '交易', value: MESSAGE_TYPE.transaction, disabled: true },
 ]

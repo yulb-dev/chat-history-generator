@@ -46,7 +46,7 @@ export default (props: Props) => {
         name="type"
         rules={[{ required: true, message: '请选择消息类型' }]}
       >
-        <Select style={{ width: 120 }} options={MESSAGE_TYPE_FILTER} />
+        <Select style={{ width: 150 }} options={MESSAGE_TYPE_FILTER} />
       </Form.Item>
 
       <Form.Item<FieldType>

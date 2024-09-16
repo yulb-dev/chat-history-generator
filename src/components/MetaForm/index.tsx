@@ -1,20 +1,23 @@
 import { UserInfo } from '@/models/userModel'
 import {
   Form,
+  FormProps,
   GetProp,
   Input,
   message,
+  TimePicker,
   Upload,
   UploadFile,
   UploadProps,
 } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 import ImgCrop from 'antd-img-crop'
+import { Meta } from '@/models/meta'
+import { useModel } from 'umi'
 
-export interface Props {
-  userInfo?: UserInfo
-  onChange?: (form: UserInfo) => void
-}
+import dayjs from 'dayjs'
+
+const format = 'HH:mm'
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0]
 
@@ -24,8 +27,9 @@ const getBase64 = (img: any, callback: (url: string) => void) => {
   reader.readAsDataURL(img)
 }
 
-export default (props: Props) => {
-  const [form] = Form.useForm<UserInfo>()
+export default () => {
+  const [form] = Form.useForm<Meta>()
+  const { meta, setMeta } = useModel('meta')
   const [fileList, setFileList] = useState<UploadFile[]>([])
 
   const beforeUpload = (file: FileType) => {
@@ -34,13 +38,21 @@ export default (props: Props) => {
       message.error('请上传图片')
     }
     getBase64(file, (url) => {
+      setMeta({
+        ...meta,
+        backgroundImg: url,
+      })
       setFileList([file])
-      props.onChange?.({ avatar: url })
     })
     return false
   }
 
-  const handleChange = () => {}
+  const handleValuesChange: FormProps['onValuesChange'] = (
+    changedValues,
+    values
+  ) => {
+    setMeta({ ...values, backgroundImg: meta.backgroundImg })
+  }
 
   const uploadButton = (
     <button style={{ border: 0, background: 'none' }} type="button">
@@ -49,16 +61,19 @@ export default (props: Props) => {
     </button>
   )
 
-  const imageUrl = props.userInfo?.avatar
-
+  const imageUrl = meta.backgroundImg
   return (
     <Form
       labelCol={{ span: 6 }}
       form={form}
-      initialValues={{ ...props.userInfo }}
+      initialValues={{ ...meta }}
+      onValuesChange={handleValuesChange}
     >
-      <Form.Item<UserInfo> label="头像" name="avatar">
-        <ImgCrop rotationSlider>
+      <Form.Item<Meta> label="时间" name="time">
+        <TimePicker format={format} />
+      </Form.Item>
+      <Form.Item<Meta> label="背景" name="backgroundImg">
+        <ImgCrop rotationSlider aspect={9 / 16}>
           <Upload
             name="avatar"
             listType="picture-card"
@@ -67,20 +82,12 @@ export default (props: Props) => {
             fileList={fileList}
           >
             {imageUrl ? (
-              <img src={imageUrl} alt="avatar" style={{ width: '100%' }} />
+              <img src={imageUrl} alt="avatar" style={{ height: '100%' }} />
             ) : (
               uploadButton
             )}
           </Upload>
         </ImgCrop>
-      </Form.Item>
-      <Form.Item<UserInfo> label="用户名" name="username">
-        <Input
-          placeholder="请输入用户名"
-          onChange={({ currentTarget }) =>
-            props.onChange?.({ username: currentTarget.value })
-          }
-        />
       </Form.Item>
     </Form>
   )

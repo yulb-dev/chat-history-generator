@@ -1,8 +1,9 @@
-import { Button, Card, Tabs, TabsProps } from 'antd'
+import { Card, Tabs, TabsProps } from 'antd'
 import MessageForm, { Props } from '@/components/MessageForm'
 import MessageList from '@/components/MessageList'
-import { MessageDetail, MESSAGE_TYPE } from '@/constant'
+import { MessageDetail } from '@/constant'
 import UsersForm from '@/components/UsersForm'
+import MetaForm from '@/components/MetaForm'
 
 export default function HomePage() {
   const [messageList, setMessageList] = useState<MessageDetail[]>([])
@@ -22,6 +23,11 @@ export default function HomePage() {
       key: '2',
       label: '用户信息',
       children: <UsersForm />,
+    },
+    {
+      key: '3',
+      label: '元信息',
+      children: <MetaForm />,
     },
   ]
 

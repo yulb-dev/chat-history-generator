@@ -28,7 +28,6 @@ export default (props: Props) => {
       form={form}
       initialValues={{ type: MESSAGE_TYPE.TEXT, sender: SENDER.Sender }}
       onFinish={(value) => props.onSubmit?.(value)}
-      // onFinishFailed={onFinishFailed}
     >
       <Form.Item<FieldType>
         label="发送方"
@@ -38,8 +37,7 @@ export default (props: Props) => {
         <Radio.Group>
           {SENDER_FILTER.map(({ value, label }, i) => (
             <Radio value={value} key={i}>
-              {' '}
-              {label}{' '}
+              {label}
             </Radio>
           ))}
         </Radio.Group>

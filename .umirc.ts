@@ -7,6 +7,8 @@ import path from "path";
 const pathSrc = path.resolve(__dirname, "src");
 
 export default defineConfig({
+  base: '/chat-history-generator',
+  publicPath: '/chat-history-generator/',
   routes: defaultRoutes,
   plugins: ['@umijs/plugins/dist/antd', '@umijs/plugins/dist/tailwindcss',],
   antd: {},

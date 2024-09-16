@@ -1,0 +1,55 @@
+.text_type {
+  background-color: white;
+  position: relative;
+  color: #353535;
+  font-size: 14px;
+  max-width: 350px;
+  padding: 7px 12px;
+  margin: 0 14px;
+  border-radius: 4px;
+  word-break: break-all;
+  font-family:
+    mp-quote,
+    -apple-system-font,
+    BlinkMacSystemFont,
+    Helvetica Neue,
+    PingFang SC,
+    Hiragino Sans GB,
+    Microsoft YaHei UI,
+    Microsoft YaHei,
+    Arial,
+    sans-serif;
+
+  &::before {
+    background-color: white;
+    border-radius: 0 2px 0 0;
+    content: ' ';
+    display: block;
+    height: 10px;
+    position: absolute;
+    top: 18px;
+    transform: rotate(45deg);
+    transform-origin: 50%;
+    width: 10px;
+  }
+}
+
+.text_type_recipient {
+  &::before {
+    margin-left: -5px;
+    margin-top: -5px;
+    position: absolute;
+    left: 0;
+  }
+}
+.text_type_sender {
+  background-color: #95ec69;
+
+  &::before {
+    background-color: #95ec69;
+    margin-right: -5px;
+    margin-top: -5px;
+    position: absolute;
+    right: 0;
+  }
+}

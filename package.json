@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "author": "Yuxx <737534279@qq.com>",
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi setup",
+    "setup": "umi setup",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "@ant-design/pro-components": "^2.7.16",
+    "antd": "^5.20.6",
+    "axios": "^1.7.7",
+    "umi": "^4.3.20"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
+    "@umijs/plugins": "^4.3.20",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.0.3",
+    "unplugin-auto-import": "^0.18.3"
+  }
+}
